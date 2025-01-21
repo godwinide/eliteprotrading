@@ -110,24 +110,33 @@
                                     <h2>Complete <strong>Deposit </strong></h2>
                                 </div>
                                 <div class="body">
+                                    <p>Make payment and contact support after deposit.</p>
 
                                     <div class="row" id="planselectz">
-                                        <p>To Fund Your account, You are to Pay <%= req.user.currency%>
-                                                <%=typeof amount !='undefined' ? amount : 200.00%> Worth of Bitcoin to
-                                                    the Wallet Address Below. Contact Support
-                                                    for More Guidance</p>
-
-                                        <h3><%=walletAddress%></h3>
-                                        <p>or scan QR code Below:</p>
-                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" data-wow-duration="1s"
-                                            data-wow-delay="0s" cellspacing="0"
-                                            style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: fadeInUp;padding-bottom: 30px;">
-                                            <img  style="margin: auto;" height="260" width="300" 
-                                            src="https://chart.googleapis.com/chart?chs=200x200&amp;cht=qr&amp;chl=<%=walletAddress%>">
+                                        <div class="col-xl-12 col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <label>Deposit amount</label>
+                                                <div class="input-group">
+                                                    <input type="text" name="amount" value="<%=req.user.currency%> <%=amount%>" class="form-control" readonly>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <!-- qr code with copy button -->
+                                        <p>Deposit address:</p>
+                                        <div class="form-group">
+                                            <input class="form-control border-primary" value="<%=walletAddress%>"
+                                            type="text" name="walletAddress" id="walletAddress" readonly>
+                                        </div>
+                                        <p>or scan QR code Below:</p>
+                                        <!-- QR code from wallet address with quickchart.io with size 300x300  -->
+                                        <img src="https://quickchart.io/qr?text=<%=walletAddress%>&size=300x300" />
+
                                         <div class="col text-center hide-sm">
                                             <a class="btn btn-primary btn-round btn-simple float-right m-l-10 btn-warning waves-effect js-copy"
-                                                data-text="walletAddress">walletAddress</a>
+                                                data-text="walletAddress"><%=walletAddress%></a>
                                         </div>
                                     </div>
                                 </div>
